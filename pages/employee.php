@@ -53,7 +53,7 @@ $db = new DB($host, $user, $password, $db_name);
                                 <td><?php echo $employeeitem["name"]; ?></td>
                                 <td><?php echo $employeeitem["secondname"]; ?></td>
                                 <td><?php echo $employeeitem["email"]; ?></td>
-                                <td><?php echo $employeeitem["positiontname"]; ?></td>
+                                <td><?php echo $employeeitem["positionname"]; ?></td>
                             </tr>
                         <?php }
                         ?>

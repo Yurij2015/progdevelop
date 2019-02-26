@@ -72,8 +72,8 @@ if ($_POST) {
                             <label for="name">Имя</label>
                             <input type="text" class="form-control" id="name" placeholder="Имя"
                                    name="name"
-                                   value="<?php echo $employeeitemnameme"]; ?>">
-                            <input type="hidden" value="<?php echo $employeeitem["idemployee"]; ?>" name="idemployee">
+                                   value="<?php echo $employeeitem["name"]; ?>">
+                            <input type="hidden" value="<?php echo $employeeitem['idemployee']; ?>" name="idemployee">
                         </div>
 
                         <div class="form-group">
