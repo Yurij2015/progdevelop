@@ -25,6 +25,7 @@ class DB
         $result = $this->connetion->query($sql);
 
         if (mysqli_error($this->connetion)) {
+
             throw new Exception(mysqli_error($this->connetion));
         }
 

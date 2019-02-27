@@ -7,9 +7,7 @@
 
 class EmployeeForm
 {
-    private $name;
-    private $secondname;
-    private $emailempl;
+    private $employename;
     private $position_idposition;
 
 
@@ -18,65 +16,30 @@ class EmployeeForm
      */
     function __construct(Array $data)
     {
-        $this->name = isset($data['name']) ? $data['name'] : null;
-        $this->secondname = isset($data['secondname']) ? $data['secondname'] : null;
-        $this->emailempl = isset($data['emailempl']) ? $data['emailempl'] : null;
+        $this->employename = isset($data['employename']) ? $data['employename'] : null;
         $this->position_idposition = isset($data['position_idposition']) ? $data['position_idposition'] : null;
 
     }
 
     public function validate()
     {
-        return !empty($this->name) && !empty($this->secondname) && !empty($this->position_idposition) && !empty($this->emailempl);
+        return !empty($this->employename) && !empty($this->position_idposition);
     }
 
     /**
      * @return mixed
      */
-    public function getName()
+    public function getEmployeeName()
     {
-        return $this->name;
+        return $this->employename;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $employename
      */
-    public function setName($name)
+    public function setEmployeeName($employename)
     {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSecondname()
-    {
-        return $this->secondname;
-    }
-
-    /**
-     * @param mixed $secondname
-     */
-    public function setSecondname($secondname)
-    {
-        $this->secondname = $secondname;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->emailempl;
-    }
-
-    /**
-     * @param mixed $emailempl
-     */
-    public function setEmail($emailempl)
-    {
-        $this->emailempl = $emailempl;
+        $this->employename = $employename;
     }
 
     /**

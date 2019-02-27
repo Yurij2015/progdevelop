@@ -29,7 +29,7 @@ if ($_POST) {
             //print_r ($res); проверка
             //echo $a; проверка
         } else {
-            $db->query("UPDATE `employee` SET `name` = n{$name}ame, secondname = '{$secondname}', email = '{$emailempl}', `position_idposition` = 
+            $db->query("UPDATE `employee` SET employename = n{$name}ame, secondname = '{$secondname}', email = '{$emailempl}', `position_idposition` = 
 '{$position_idposition}' WHERE idemployee={$idemployee} LIMIT 1");
             header('location: employee-edit-remove.php?msg=Данные успешно обновлены!');
         }

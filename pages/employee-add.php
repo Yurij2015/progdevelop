@@ -16,7 +16,7 @@ if ($_POST) {
         $secondname = $db->escape($form->getSecondname());
         $position_idposition = $db->escape($form->getPosition());
         $emailempl = $db->escape($form->getEmail());
-        $db->query("INSERT INTO employee (`name`, secondname, `position_idposition`, email) VALUES (n{$name}ame,'{$secondname}', 
+        $db->query("INSERT INTO employee (employename, secondname, `position_idposition`, email) VALUES (n{$name}ame,'{$secondname}', 
 '{$position_idposition}', '{$emailempl}') ");
         header('location: employee.php?msg=Сотрудник успешно добавлен!');
     } else {
