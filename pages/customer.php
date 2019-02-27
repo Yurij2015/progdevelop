@@ -8,7 +8,7 @@
 session_start();
 require_once '../Session.php';
 ?>
-<?php $title = "Сотрудники организации" ?>
+<?php $title = "Клиенты" ?>
 <?php
 require_once('../Dbsettings.php');
 include_once('../DB.php');
@@ -36,30 +36,26 @@ $db = new DB($host, $user, $password, $db_name);
                 <div class="text-justify border border-bottom-0 border-right-0"
                      style="line-height: 40px; padding-left: 10px; padding-right: 10px;">
                     <div style="margin: 4px 0 7px 0;">
-                        <a href="employee-add.php" class="btn btn-info">Добавить сотрудника</a>
+                        <a href="customer-add.php" class="btn btn-info">Добавить клиента</a>
                         <!--                        <a href="employee-edit-remove.php" class="btn btn-info">Редактировать / Удалить</a>-->
                     </div>
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th scope="col" class="text-center">Имя</th>
-                            <th scope="col" class="text-center">Фамилия</th>
-                            <th scope="col" class="text-center">Email</th>
-                            <th scope="col" class="text-center">Должность</th>
+                            <th scope="col" class="text-center">Номер телефона</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
                         try {
-                        $db = new DB($host, $user, $password, $db_name);
-                        $employee = $db->query("SELECT * FROM employee, position WHERE employee.position_idposition = position.idposition");
-                        foreach ($employee as $employeeitem) {
+                       // $db = new DB($host, $user, $password, $db_name);
+                        $customer= $db->query("SELECT * FROM customer");
+                        foreach ($customer as $customeritem) {
                             ?>
                             <tr>
-                                <td><?php echo $employeeitem["name"]; ?></td>
-                                <td><?php echo $employeeitem["secondname"]; ?></td>
-                                <td><?php echo $employeeitem["email"]; ?></td>
-                                <td><?php echo $employeeitem["positionname"]; ?></td>
+                                <td><?php echo $customeritem["custname"]; ?></td>
+                                <td><?php echo $customeritem["phone"]; ?></td>
                             </tr>
                         <?php }
                         ?>
