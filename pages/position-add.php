@@ -2,9 +2,8 @@
 session_start()
 /**
  * Created by PhpStorm.
- * Project: taskshedule.loc.
  * File: position-add.php.
- * Date: 19.04.2018
+ * Date: 2019-02-27
  * Time: 13:43
  */
 ?>

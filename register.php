@@ -6,21 +6,15 @@ require_once('DB.php');
 require_once('Password.php');
 require_once('Session.php');
 require_once('Dbsettings.php');
-
-
 $msg = '';
-
 $db = new DB($host, $user, $password, $db_name);
 $form = new RegistrationForm($_POST);
-
-
 if ($_POST) {
     if ($form->validate()) {
         $email = $db->escape($form->getEmail());
         $username = $db->escape($form->getUsername());
         $usersecondname = $db->escape($form->getUserSecondName());
         $password = new Password($db->escape($form->getPassword()));
-
         $res = $db->query("SELECT * FROM `user` WHERE email = '{$email}'");
         if ($res) {
             $msg = 'Пользователь с таким эл. адресом уже существует!';
@@ -28,12 +22,10 @@ if ($_POST) {
             $db->query("INSERT INTO `user` (email, username, usersecondname, password) VALUES ('{$email}','{$username}', '{$usersecondname}','{$password}')");
             header('location: index.php?msg=Регистрация прошла успешно!');
         }
-
     } else {
         $msg = $form->passwordsMatch() ? 'Пожалуйста, заполните все поля' : 'Пароли не совпадают';
     }
 }
-
 ?>
 <?php include 'header.php' ?>
 <div class="container">
@@ -67,10 +59,7 @@ if ($_POST) {
             </div>
             <button type="submit" class="btn btn-primary">Отправить</button>
             <a href="index.php" class="btn btn-primary">Отмена</a>
-
         </form>
     </div>
-
 </div>
-
 <?php include 'footer.php' ?>
