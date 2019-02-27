@@ -7,8 +7,13 @@
  */
 session_start();
 require_once '../Session.php';
+//проверка, авторизирован ли пользователь
+if (!Session::has('email')) {
+    //перенаправление на форму авторизации
+    header('Location: ../login.php?msg=У Вас нет доступа к сайту. Войдите на сайт!');
+}
 ?>
-<?php $title = "Сотрудники организации" ?>
+<?php $title = "Заявки на услуги" ?>
 <?php
 require_once('../Dbsettings.php');
 include_once('../DB.php');
@@ -36,30 +41,33 @@ $db = new DB($host, $user, $password, $db_name);
                 <div class="text-justify border border-bottom-0 border-right-0"
                      style="line-height: 40px; padding-left: 10px; padding-right: 10px;">
                     <div style="margin: 4px 0 7px 0;">
-                        <a href="employee-add.php" class="btn btn-info">Добавить сотрудника</a>
-                        <!--                        <a href="employee-edit-remove.php" class="btn btn-info">Редактировать / Удалить</a>-->
+                        <a href="request-add.php" class="btn btn-info">Добавить заявку</a>
                     </div>
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th scope="col" class="text-center">Имя</th>
-                            <th scope="col" class="text-center">Фамилия</th>
-                            <th scope="col" class="text-center">Email</th>
-                            <th scope="col" class="text-center">Должность</th>
+                            <th scope="col" class="text-center">ID заявки</th>
+                            <th scope="col" class="text-center">Дата создания</th>
+                            <th scope="col" class="text-center">Услуга</th>
+                            <th scope="col" class="text-center">Клиент</th>
+                            <th scope="col" class="text-center">Принял заявку</th>
+                            <th scope="col" class="text-center">Детали</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
                         try {
                         $db = new DB($host, $user, $password, $db_name);
-                        $employee = $db->query("SELECT * FROM employee, position WHERE employee.position_idposition = position.idposition");
-                        foreach ($employee as $employeeitem) {
+                        $applicationForm = $db->query("SELECT * FROM applicationForm, service, customer, employee WHERE applicationForm.service_idservice = service.idservice AND applicationForm.customer_idcustomer = customer.idcustomer AND applicationForm.employee_idemployee = employee.idemployee");
+                        foreach ($applicationForm as $applformitem) {
                             ?>
                             <tr>
-                                <td><?php echo $employeeitem["name"]; ?></td>
-                                <td><?php echo $employeeitem["secondname"]; ?></td>
-                                <td><?php echo $employeeitem["email"]; ?></td>
-                                <td><?php echo $employeeitem["positionname"]; ?></td>
+                                <td><?php echo $applformitem["applname"]; ?></td>
+                                <td><?php echo $applformitem["date"]; ?></td>
+                                <td><?php echo $applformitem["servicename"]; ?></td>
+                                <td><?php echo $applformitem["custname"]; ?></td>
+                                <td><?php echo $applformitem["employename"]; ?></td>
+                                <td><?php echo $applformitem["info"]; ?></td>
                             </tr>
                         <?php }
                         ?>

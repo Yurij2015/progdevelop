@@ -1,8 +1,6 @@
-<?php session_start() ?>
-<?php $title = "Добавление сотрудника" ?>
-<?php
+<?php session_start();
+$title = "Добавление сотрудника";
 require_once('../forms/EmployeeForm.php');
-//require_once ('forms/LoginForm.php');
 require_once('../DB.php');
 require_once('../Password.php');
 require_once('../Session.php');
@@ -12,12 +10,9 @@ $db = new DB($host, $user, $password, $db_name);
 $form = new EmployeeForm($_POST);
 if ($_POST) {
     if ($form->validate()) {
-        $name = $db->escape($form->getName());
-        $secondname = $db->escape($form->getSecondname());
+        $employename = $db->escape($form->getEmployeeName());
         $position_idposition = $db->escape($form->getPosition());
-        $emailempl = $db->escape($form->getEmail());
-        $db->query("INSERT INTO employee (employename, secondname, `position_idposition`, email) VALUES (n{$name}ame,'{$secondname}', 
-'{$position_idposition}', '{$emailempl}') ");
+        $db->query("INSERT INTO employee (employename,position_idposition) VALUES ('{$employename}','{$position_idposition}') ");
         header('location: employee.php?msg=Сотрудник успешно добавлен!');
     } else {
         $msg = 'Пожалуйста, заполните все поля';
@@ -43,35 +38,22 @@ if ($_POST) {
         <div class="col-sm">
             <div class="text-justify border border-bottom-0 border-right-0"
                  style="line-height: 40px; padding-left: 10px; padding-right: 10px;">
-
                 <b style="color: red;"><?= $msg; ?></b>
                 <form method="post">
                     <div class="form-group">
                         <label for="name">Имя</label>
-                        <input type="text" class="form-control" id="name" placeholder="Имя"
-                               name="name"
-                               value="<?= $form->getName(); ?>">
+                        <input type="text" class="form-control" id="employename" placeholder="Имя"
+                               name="employename"
+                               value="<?= $form->getEmployeeName(); ?>">
                     </div>
                     <div class="form-group">
-                        <label for="secondname">Фамилия</label>
-                        <input type="text" class="form-control" id="secondname" placeholder="Фамилия"
-                               name="secondname" value="<?= $form->getSecondname() ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="secondname">Email</label>
-                        <input type="email" required class="form-control" id="emailempl" placeholder="Email"
-                               name="emailempl" value="<?= $form->getEmail() ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="idunit">Должность</label>
+                        <label for="position_idposition">Должность</label>
                         <select class="form-control" name="position_idposition" id="position_idposition">
                             <?php
-                            $position = $db->query("SELECT idposition, positiontname FROM position");
+                            $position = $db->query("SELECT idposition, positionname FROM position");
                             foreach ($position as $positionitem) {
                                 ?>
-                                <option value="<?php echo $positionitem['idposition'] ?>"><?php echo $positionitem['positiontname'] ?></option>
+                                <option value="<?php echo $positionitem['idposition'] ?>"><?php echo $positionitem['positionname'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -83,8 +65,5 @@ if ($_POST) {
             </div>
         </div>
     </div>
-
 </div>
-
-
 <?php include 'footer.php' ?>

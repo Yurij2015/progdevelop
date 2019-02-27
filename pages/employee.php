@@ -37,8 +37,6 @@ $db = new DB($host, $user, $password, $db_name);
                         <thead>
                         <tr>
                             <th scope="col" class="text-center">Имя</th>
-                            <th scope="col" class="text-center">Фамилия</th>
-                            <th scope="col" class="text-center">Email</th>
                             <th scope="col" class="text-center">Должность</th>
                         </tr>
                         </thead>
@@ -50,9 +48,7 @@ $db = new DB($host, $user, $password, $db_name);
                         foreach ($employee as $employeeitem) {
                             ?>
                             <tr>
-                                <td><?php echo $employeeitem["name"]; ?></td>
-                                <td><?php echo $employeeitem["secondname"]; ?></td>
-                                <td><?php echo $employeeitem["email"]; ?></td>
+                                <td><?php echo $employeeitem["employename"]; ?></td>
                                 <td><?php echo $employeeitem["positionname"]; ?></td>
                             </tr>
                         <?php }

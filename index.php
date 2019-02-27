@@ -39,27 +39,39 @@ $db = new DB($host, $user, $password, $db_name);
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Услуга</th>
-                        <th scope="col">Клиент</th>
-                        <th scope="col">Менеджер</th>
-                        <th scope="col">Детали</th>
+                        <th scope="col" class="text-center">ID заявки</th>
+<!--                        <th scope="col" class="text-center">Дата создания</th>-->
+                        <th scope="col" class="text-center">Услуга</th>
+                        <th scope="col" class="text-center">Клиент</th>
+                        <th scope="col" class="text-center">Принял заявку</th>
+                        <th scope="col" class="text-center">Детали</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    for ($i = 0; $i < 14; $i++) {
-                        echo "<tr>
-                            <th scope=\"row\">$i</th>
-                            <td>$i - 1</td>
-                            <td>$i - 2</td>
-                            <td>$i - 3</td>
-                            <td>$i - detail</td>
-                           </tr>";
-                    }
+                    try {
+                    $db = new DB($host, $user, $password, $db_name);
+                    $applicationForm = $db->query("SELECT * FROM applicationForm, service, customer, employee WHERE applicationForm.service_idservice = service.idservice AND applicationForm.customer_idcustomer = customer.idcustomer AND applicationForm.employee_idemployee = employee.idemployee");
+                    foreach ($applicationForm as $applformitem) {
+                        ?>
+                        <tr>
+                            <td><?php echo $applformitem["applname"]; ?></td>
+<!--                            <td>--><?php //echo $applformitem["date"]; ?><!--</td>-->
+                            <td><?php echo $applformitem["servicename"]; ?></td>
+                            <td><?php echo $applformitem["custname"]; ?></td>
+                            <td><?php echo $applformitem["employename"]; ?></td>
+                            <td><?php echo $applformitem["info"]; ?></td>
+                        </tr>
+                    <?php }
                     ?>
                     </tbody>
                 </table>
+                <?php
+                } catch
+                (Exception $e) {
+                    echo $e->getMessage() . ':(';
+                }
+                ?>
 
             </div>
         </div>

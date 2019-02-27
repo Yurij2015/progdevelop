@@ -25,7 +25,7 @@ class OrderForm
 
     public function validate()
     {
-        return !empty($this->positionname) && !empty($this->applicationForm_idapplicationForm && !empty($this->status));
+        return !empty($this->date) && !empty($this->applicationForm_idapplicationForm && !empty($this->status));
     }
 
     /**

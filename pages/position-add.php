@@ -20,8 +20,8 @@ $db = new DB($host, $user, $password, $db_name);
 $form = new PositionForm($_POST);
 if ($_POST) {
     if ($form->validate()) {
-        $positionname = $db->escape($form->getPosition());
-        $db->query("INSERT INTO position (`positiontname`) VALUES ('{$positionname}') ");
+        $positionname= $db->escape($form->getPosition());
+        $db->query("INSERT INTO position (`positionname`) VALUES ('{$positionname}') ");
         header('location: position.php?msg=Должность успешно добавлена!');
     } else {
         $msg = 'Пожалуйста, заполните все поля';
@@ -54,8 +54,8 @@ include 'var.php';
                 <b style="color: red;"><?= $msg; ?></b>
                 <form method="post">
                     <div class="form-group">
-                        <label for="unitname">Название отдела</label>
-                        <input type="text" class="form-control" id="unitname" placeholder="Название должности"
+                        <label for="positionname">Название должности</label>
+                        <input type="text" class="form-control" id="positionname" placeholder="Название должности"
                                name="positionname"
                                value="<?= $form->getPosition(); ?>">
                     </div>

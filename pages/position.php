@@ -31,8 +31,7 @@ $db = new DB($host, $user, $password, $db_name);
                      style="line-height: 40px; padding-left: 10px; padding-right: 10px;">
                     <div style="margin: 4px 0 7px 0;">
                         <a href="position-add.php" class="btn btn-info">Добавить должность</a>
-                        <!--                        <a href="position-edit-remove.php" class="btn btn-info">Редактировать / Удалить</a>-->
-
+                        <!-- <a href="position-edit-remove.php" class="btn btn-info">Редактировать / Удалить</a>-->
                     </div>
                     <table class="table table-bordered">
                         <thead>
@@ -47,7 +46,7 @@ $db = new DB($host, $user, $password, $db_name);
                         foreach ($position as $positionitem) {
                             ?>
                             <tr>
-                                <td><?php echo $positionitem["positiontname"]; ?></td>
+                                <td><?php echo $positionitem["positionname"]; ?></td>
                             </tr>
                         <?php }
                         ?>
