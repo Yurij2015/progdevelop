@@ -11,7 +11,7 @@ $db = new DB( $host, $user, $password, $db_name );
 <?php include 'header.php' ?>
 <?= isset( $_GET['msg'] ) ? $_GET['msg'] : ''; ?>
     <hr>
-    <h5 align="center">Корпоративная информационная система</h5>
+    <h6 align="right">Система приема заказов</h6>
     <hr>
     <div class="container">
         <div class="row">

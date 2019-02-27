@@ -14,7 +14,6 @@ foreach ($task as $taskitem) {
     $taskforempl = $taskitem['employee_idemployee'];
 }
 
-//echo $taskforempl;
 
 if ($taskforempl) {
     header('location: employee.php?msg=Запись не может быть удалена! За сотрудником закреплены задачи!');

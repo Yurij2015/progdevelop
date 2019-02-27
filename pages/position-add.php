@@ -33,9 +33,8 @@ if ($_POST) {
 include 'header.php';
 include 'var.php';
 ?>
-
 <hr>
-<h5 align="center"><?php echo $system_name ?></h5>
+<h6 align="right"><?php echo $system_name ?></h6>
 <hr>
 <div class="container">
     <div class="row">

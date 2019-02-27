@@ -41,7 +41,7 @@ if ($_POST) {
 ?>
 <?php include 'header.php' ?>
 <hr>
-<h5 align="center">Корпоративная информационная система</h5>
+<h6 align="right">Система приема заказов</h6>
 <hr>
 <div class="container">
     <div class="row">

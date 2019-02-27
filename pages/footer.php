@@ -1,7 +1,6 @@
 <hr>
 </div>
-
-<footer class="text-center " style="padding-bottom: 10px;"><?php echo date( "Y" ); ?> &copy Все права защищены.
+<footer class="text-center " style="padding-bottom: 10px;"><?php echo date("Y"); ?> &copy Все права защищены.
     ProgramService - Прием заказов
 </footer>
 <script src="../js/jquery-3.2.1.js"></script>

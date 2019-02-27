@@ -12,7 +12,7 @@ $db = new DB($host, $user, $password, $db_name);
     <h6 style="color: red; line-height: 20px;"
         class="text-center"><?= isset($_GET['msg']) ? $_GET['msg'] : ''; ?></h6>
     <hr>
-    <h5 align="center">Менеджер задач</h5>
+    <h6 align="right">Система приема заказов</h6>
     <hr>
     <div class="container">
         <div class="row">
